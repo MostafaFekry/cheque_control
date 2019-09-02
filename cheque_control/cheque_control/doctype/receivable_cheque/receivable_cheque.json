@@ -1,0 +1,325 @@
+{
+ "allow_copy": 1,
+ "autoname": "naming_series:",
+ "creation": "2019-07-18 02:54:56.640980",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cheque_details_section",
+  "naming_series",
+  "status",
+  "cheque_no",
+  "cheque_date",
+  "column_break_00",
+  "amount",
+  "currency",
+  "exchange_rate",
+  "party_section",
+  "party_type",
+  "party",
+  "party_name",
+  "column_break_5",
+  "contact_person",
+  "contact_email",
+  "bank_details_section",
+  "cheque_bank_name",
+  "column_break_17",
+  "bank_account",
+  "deposit_account",
+  "bank",
+  "bank_account_no",
+  "section_break_00",
+  "status_history",
+  "bank_changed",
+  "section_break_12",
+  "payment_entry",
+  "remarks",
+  "column_break_6",
+  "company",
+  "project",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "party_section",
+   "fieldtype": "Section Break",
+   "label": "Payment From"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Link",
+   "label": "Party Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "default": "Dynamic Link",
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Party",
+   "options": "party_type",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "columns": 1,
+   "fieldname": "party_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Party Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "party",
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "label": "Contact",
+   "options": "Contact"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "contact_person",
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cheque_details_section",
+   "fieldtype": "Section Break",
+   "label": "Cheque Details"
+  },
+  {
+   "bold": 1,
+   "columns": 2,
+   "fieldname": "cheque_no",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Cheque No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "columns": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_00",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "columns": 1,
+   "fieldname": "cheque_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Cheque Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Currency",
+   "label": "Exchange Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_details_section",
+   "fieldtype": "Section Break",
+   "label": "Bank Details"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "cheque_bank_name",
+   "fieldtype": "Link",
+   "label": "Cheque Bank Name",
+   "options": "Bank"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "party",
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Deposit Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "bank_account",
+   "fetch_from": "bank_account.account",
+   "fieldname": "deposit_account",
+   "fieldtype": "Read Only",
+   "label": "GL Account"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "bank_account",
+   "fetch_from": "bank_account.bank",
+   "fieldname": "bank",
+   "fieldtype": "Read Only",
+   "label": "Bank"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "bank_account",
+   "fetch_from": "bank_account.bank_account_no",
+   "fieldname": "bank_account_no",
+   "fieldtype": "Read Only",
+   "label": "Bank Account No"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "status_history",
+   "fieldname": "section_break_00",
+   "fieldtype": "Section Break",
+   "label": "Cheque Transaction"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status_history",
+   "fieldtype": "Table",
+   "label": "Cheque Status",
+   "options": "Receivable Cheque Status",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "bank_changed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Bank Changed",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "payment_entry",
+   "fieldtype": "Data",
+   "label": "Payment Entry",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Receivable Cheque",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CHQ-REC-.YYYY.-",
+   "print_hide": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "\nDraft\nSubmitted\nCheque Received\nCheque Deposited\nCheque Collected\nCheque Cancelled\nCheque Returned\nCheque Rejected",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  }
+ ],
+ "in_create": 1,
+ "is_submittable": 1,
+ "modified": "2019-09-02 13:32:09.366642",
+ "modified_by": "Administrator",
+ "module": "Cheque Control",
+ "name": "Receivable Cheque",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "cheque_no,status,amount",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "cheque_no",
+ "track_changes": 1
+}
