@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # Copyright (c) 2017, Direction and contributors
 # For license information, please see license.txt
 
@@ -8,9 +8,9 @@ from frappe.utils import flt, cstr, nowdate, comma_and
 from frappe import throw, msgprint, _
 
 def pe_before_submit(self, method):
-	if not self.reference_no:
+	if not self.reference_no and self.mode_of_payment == "Cheque":
 		frappe.throw(_("Error. Value missing in: Cheque/Reference No"))
-	if not self.reference_date:
+	if not self.reference_date and self.mode_of_payment == "Cheque":
 		frappe.throw(_("Error. Value missing in: Cheque/Reference Date"))
 	if self.mode_of_payment == "Cheque" and self.payment_type == "Receive":			
 		notes_acc = frappe.db.get_value("Company", self.company, "receivable_notes_account")
