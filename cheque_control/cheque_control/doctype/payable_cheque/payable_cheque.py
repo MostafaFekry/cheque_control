@@ -75,7 +75,7 @@ class PayableCheque(Document):
 				"bank": self.bank
 			})
 		self.submit()
-		message = """<a href="#Form/Payment Entry/%s" target="_blank">%s</a>""" % (self.payment_entry, self.payment_entry)
+		message = """<a href="/app/payment-entry/%s" target="_blank">%s</a>""" % (self.payment_entry, self.payment_entry)
 		msgprint(_("Payment Entry {0} Cancelled").format(comma_and(message)))
 		
 		return message
@@ -128,7 +128,7 @@ class PayableCheque(Document):
 		
 		self.update_status(action_status)
 		self.submit()
-		message = """<a href="#Form/Journal Entry/%s" target="_blank">%s</a>""" % (jv.name, jv.name)
+		message = """<a href="/app/journal-entry/%s" target="_blank">%s</a>""" % (jv.name, jv.name)
 		msgprint(_("Journal Entry {0} created").format(comma_and(message)))
 		#message = _("Journal Entry {0} created").format(comma_and(message))
 		

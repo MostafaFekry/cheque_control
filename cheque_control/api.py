@@ -81,7 +81,7 @@ def pe_on_submit(self, method):
 		])
 		rc.insert(ignore_permissions=True)
 		rc.submit()
-		message = """<a href="#Form/Receivable Cheque/%s" target="_blank">%s</a>""" % (rc.name, rc.name)
+		message = """<a href="/app/receivable-cheque/%s" target="_blank">%s</a>""" % (rc.name, rc.name)
 		msgprint(_("Receivable Cheque {0} created").format(comma_and(message)))
 
 	if self.mode_of_payment == "Cheque" and self.payment_type == "Pay":
@@ -128,7 +128,7 @@ def pe_on_submit(self, method):
 		])
 		pc.insert(ignore_permissions=True)
 		pc.submit()
-		message = """<a href="#Form/Payable Cheque/%s" target="_blank">%s</a>""" % (pc.name, pc.name)
+		message = """<a href="/app/payable-cheque/%s" target="_blank">%s</a>""" % (pc.name, pc.name)
 		msgprint(_("Payable Cheque {0} created").format(comma_and(message)))
 
 def pe_on_cancel(self, method):
