@@ -1,4 +1,5 @@
 {
+ "actions": [],
  "allow_copy": 1,
  "autoname": "naming_series:",
  "creation": "2019-07-18 02:54:56.640980",
@@ -16,6 +17,7 @@
   "amount",
   "currency",
   "exchange_rate",
+  "payment_from_tab",
   "party_section",
   "party_type",
   "party",
@@ -23,6 +25,7 @@
   "column_break_5",
   "contact_person",
   "contact_email",
+  "bank_details_tab",
   "bank_details_section",
   "cheque_bank_name",
   "column_break_17",
@@ -30,16 +33,19 @@
   "deposit_account",
   "bank",
   "bank_account_no",
+  "cheque_transaction_tab",
   "section_break_00",
   "status_history",
   "bank_changed",
+  "more_infor_tab",
   "section_break_12",
   "payment_entry",
   "remarks",
   "column_break_6",
   "company",
   "project",
-  "amended_from"
+  "amended_from",
+  "connections_tab"
  ],
  "fields": [
   {
@@ -154,8 +160,8 @@
    "allow_on_submit": 1,
    "fieldname": "cheque_bank_name",
    "fieldtype": "Link",
-   "label": "Cheque Bank Name",
-   "options": "Bank"
+   "label": "Party Bank Account",
+   "options": "Bank Account"
   },
   {
    "fieldname": "column_break_17",
@@ -163,7 +169,6 @@
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "party",
    "fieldname": "bank_account",
    "fieldtype": "Link",
    "label": "Deposit Bank Account",
@@ -218,7 +223,6 @@
    "read_only": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_12",
    "fieldtype": "Section Break",
    "label": "More Information"
@@ -283,14 +287,42 @@
    "read_only": 1,
    "reqd": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "payment_from_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment From"
+  },
+  {
+   "fieldname": "bank_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Bank Details"
+  },
+  {
+   "fieldname": "cheque_transaction_tab",
+   "fieldtype": "Tab Break",
+   "label": "Cheque Transaction"
+  },
+  {
+   "fieldname": "more_infor_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Infor"
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
   }
  ],
  "in_create": 1,
  "is_submittable": 1,
- "modified": "2019-09-02 13:32:09.366642",
+ "links": [],
+ "modified": "2022-12-27 14:36:46.644708",
  "modified_by": "Administrator",
  "module": "Cheque Control",
  "name": "Receivable Cheque",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -320,6 +352,7 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "cheque_no",
  "track_changes": 1
 }

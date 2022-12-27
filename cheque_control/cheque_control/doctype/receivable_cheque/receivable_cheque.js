@@ -14,6 +14,24 @@ frappe.ui.form.on('Receivable Cheque', {
 				};
 			}
 		});
+		frm.set_query("cheque_bank_name", function() {
+			return {
+				filters: {
+					is_company_account: 0,
+					party_type: frm.doc.party_type,
+					party: frm.doc.party
+				}
+			}
+		});
+
+		frm.set_query("bank_account", function() {
+			return {
+				filters: {
+					is_company_account: 1,
+					company: frm.doc.company
+				}
+			}
+		});
 	},
 	refresh: function(frm) {
 		
